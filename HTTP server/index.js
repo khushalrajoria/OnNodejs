@@ -3,7 +3,7 @@ const express= require("express");
 
 const app =express();
 
-app.get("/",(req,res)=>{
+app.get("/",(req,res)=>{ // app.get , app.poost ye sab likhna hota hai phir route phir route pe kya karna hai
     return res.end("hello from home page")
 })
 app.get("/about",(req,res)=>{

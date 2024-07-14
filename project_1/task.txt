@@ -1,12 +1,17 @@
 make a REST API with JSON
 
-GET/user - get all the users
-GET/user1 - get users with ID =1
-GET/user2 - get users with ID =2
+so in order to make it hybrid for apps and browers we should be changing GET/user to GET/api/user
+
+GET/api/user - get all the users - Done
+GET/api/user/1 - get users with ID =1 - done
+GET/api/user/2 - get users with ID =2 - done
+
+here 1 and 2 in the path are ---> Dynamic path parameters
+GET/api/user/:id  ---> colan means that it is dynamic
 
 POST/user - create a user
 
 PATCH/user/1 - Edit user with with ID =1
-DELETE/user/1 - Edit user with with ID =1
+DELETE/api/user/1 - Edit user with with ID =1
 
 for database we will generate a fake databse for testing purpose - mockaroo.com
