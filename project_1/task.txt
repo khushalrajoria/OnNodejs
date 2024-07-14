@@ -1,0 +1,12 @@
+make a REST API with JSON
+
+GET/user - get all the users
+GET/user1 - get users with ID =1
+GET/user2 - get users with ID =2
+
+POST/user - create a user
+
+PATCH/user/1 - Edit user with with ID =1
+DELETE/user/1 - Edit user with with ID =1
+
+for database we will generate a fake databse for testing purpose - mockaroo.com
