@@ -1,0 +1,6 @@
+so middleware stands between client and server that handles req from client, can may be to authenticate user
+check for valid query or not
+and there can be several middleware that decides wether to pass the req to server or if it's not correct revert 
+it back to the client
+
+check for code in project_1 index file
