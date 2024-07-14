@@ -1,0 +1,15 @@
+https://www.khushalrajoria.dev/            www.khushalrajoria.dev                               /
+  |                                                   |                                         |
+  |                                 Domain - user friendly name for IP address                 Path
+protocol                                                       
+set of rules
+https - encrypted
+SSL certificate
+http - non encrypted
+no certificate
+(WS certificate
+for real time chat etc)
+
+
+https://www.khushalrajoria.dev/about?user=1&a=2 ---> query paramaters (extra information being passed with URL)
+

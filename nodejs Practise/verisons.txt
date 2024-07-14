@@ -1,0 +1,15 @@
+Verisons 
+
+lile 4.19.2
+so 2 here is minor fixes (optional) ---> like spelling changes or very small non necessary changes
+19 is ---> Recommended bux fixes -> like some security or some part being added
+4 is major release -> major or breaking update ( apne paas ek 4 version me ho aur apan 5 karde usko toh apna code break ho sakta hai itna bada update)
+
+if we want to download a specific version we can do that by ---> npm install express@4.18.2
+
+^ -> carrot symbol locks major release - install all minor update and Recommended automatically
+^4.17.2 -> when we update express it will automatically update it (on npm update) but only till the 4 is intact not 5.0.0
+
+~ -> squguely -> locks both Major and Recommended Verisons
+
+see documentry for more

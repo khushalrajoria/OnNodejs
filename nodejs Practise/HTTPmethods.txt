@@ -1,0 +1,5 @@
+GET ---> when you want to get some data from the server -( by default web server always makes a GET request)
+POST ---> when you wan to send or mutate data in server (like making a tweet)
+PUT ---> for posting images or files
+PATCH ---> for making chances in existing data (like edit profile/username)
+DELETE ---> for deleting data (like deleting a tweet)

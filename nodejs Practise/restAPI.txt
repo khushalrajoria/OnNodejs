@@ -1,0 +1,5 @@
+in the real terms REST API means when a client ask server for a data, a server return data in rendered form like a html page or anything else
+this is very fast and is called as SSR but in cases where the client an be a laptop that needs a HTML rendering or mobile that means flutter type 
+rendering but SSR will only provide one type of rendered data
+
+so in rest API server only provide raw data in JSON format and then rendering is done from client side
