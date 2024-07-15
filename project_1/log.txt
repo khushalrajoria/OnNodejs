@@ -1,1 +1,3 @@
 hello function now() { [native code] } : GET : /api/users
+hello function now() { [native code] } : POST : /api/users
+hello function now() { [native code] } : POST : /api/users

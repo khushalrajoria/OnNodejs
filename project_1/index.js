@@ -50,16 +50,10 @@ app.get('/api/users/:id', (req, res) => { // now this ----- has the same route
 
 // we have a problem here cause browers only makes get requests so 
 app.post('/api/users', (req, res) => {
-    /*
-        first what we did was to open post man, for the url we pasted our local host link same as http://localhost:8000/api/users 
-        then we went to body section and fill details about ourselves same as the details required in json files except 
-        the ID which is auto generated
-        then we create the user from that data here
-        we used 'x-www-form-urlencoded'
-    */
-
-        const body =req.body; // ---> this is giving body undefined, so we will use middleware above 
-        // console.log("body",body)
+        const body =req.body; 
+        if(!body || !body.first_name ||!body.last_name || !body.gender) {
+            return res.status(400).json({msg:"All fields are required..."});
+        }
         users.push({...body ,id: users.length +1}); // but we are using an offline file so we have to use FS module
         fs.writeFile('MOCK_DATA.json', JSON.stringify(users), (err) => {
             if (err) throw err;

@@ -1,0 +1,18 @@
+so status codes are used to indicate different things
+
+Here is the text extracted from the image in the same format:
+
+HTTP response status codes indicate whether a specific HTTP request has been
+successfully completed. Responses are grouped in five classes:
+
+1. Informational responses (100 – 199)
+2. Successful responses (200 – 299) ---> 200 for everthing okay, 201 for created ,202 accept,204 no content
+3. Redirection messages (300 – 399)
+4. Client error responses (400 – 499) ---> 400 bad request, 401 unauthorized,402 payment req,403 borbidden
+5. Server error responses (500 – 599) ---> 500 code error
+
+The status codes listed below are defined by RFC 9110.
+
+Would you like me to explain or elaborate on any part of this text?
+
+*I have also installed "nodmon" package and changed node index.js to nodemon index.js in the package.json file
