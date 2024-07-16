@@ -9,9 +9,9 @@ GET/api/user/2 - get users with ID =2 - done
 here 1 and 2 in the path are ---> Dynamic path parameters
 GET/api/user/:id  ---> colan means that it is dynamic
 
-POST/user - create a user
+POST/user - create a user ---> done (by postman)
 
-PATCH/user/1 - Edit user with with ID =1
-DELETE/api/user/1 - Edit user with with ID =1
+PATCH/user/1 - Edit user with with ID =1 --->done (by monogDB)
+DELETE/api/user/1 - Edit user with with ID =1 ---> done (by monogDB)
 
 for database we will generate a fake databse for testing purpose - mockaroo.com

@@ -9,3 +9,9 @@ Strong Support for Aggregation Pipes
 Works on BSON format
 
 Best for Node Applications
+
+Mongoose has been installed using npm i Mongoose
+1st we create a schema --> defines a structure
+    create a model from that, schema -> model
+    using model we do CRUD operations
+(created it in index.js)

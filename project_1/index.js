@@ -1,9 +1,42 @@
 const express = require("express");
+const mongoose =require("mongoose");
 const users = require("./MOCK_DATA.json"); // Assuming this file contains an array of user objects
 const fs =require('fs');
+const { timeStamp } = require("console");
 const app = express();
 const PORT = 8000;
 
+//connection
+mongoose.connect('mongodb://127.0.0.1:27017/khushalDatabase-1')
+    .then(() => console.log('MongoDB Connected...'))
+    .catch(err => console.log(err));
+
+// schema
+const userSchema = mongoose.Schema({
+    firstName:{
+        type:String,
+        required:true
+    },
+    lastName:{
+        type:String,
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    gender:{
+        type:String,
+    },
+    ipAddress:{
+        type:String,
+    }
+},
+   {timeStamp :true}
+);
+
+// model
+const User = mongoose.model("User",userSchema); // this user will be converted to 'users' automotically it adds and s
 
 //middleware
 app.use(express.urlencoded({extended: false})); // ---> imp this will help in parsing the json received from postman
@@ -22,53 +55,54 @@ app.use((req,res,next)=>{
 
 // Routes
 // this is an example incase we want to create a hybrid server with both SSR and USR
-app.get('/users', (req, res) => { // agar join nhi karenge toh commas se sepereate ho jayengi values
+app.get('/users', async (req, res) => { // agar join nhi karenge toh commas se sepereate ho jayengi values
+    const allDbusers =await User.find({});
     const html = `
     <ul>
-    ${users.map((user) => `<li>${user.first_name}</li>`).join("")}
+    ${allDbusers.map((User) => `<li>${User.firstName} - ${User.email}</li>`).join("")}
     </ul>
     `;
     res.send(html);
 });
 
-app.get('/api/users', (req, res) => { 
-    /*
-        headers is basically like the subject in mail like a summary
-        they represent the meta-data about the HTTP request and response
-        there are different types of headers we can see in postman
-    */
-    req.headers("x-myName","khushal rajoria"); // we can also create headers by ourself our by using postman
-    // good practise ---> add 'x' to costum header names
-    return res.json(users); // changed 'user' to 'users'
+app.get('/api/users', async (req, res) => { 
+    const allDbusers =await User.find({});
+    return res.json(allDbusers); // changed 'user' to 'users'
 });
 
-app.get('/api/users/:id', (req, res) => { // now this ----- has the same route
-    const id = Number(req.params.id);
-    const user = users.find((user) => user.id === id); // those three lines are triple =
+app.get('/api/users/:id', async(req, res) => { 
+    const user =await User.findById(req.params.id)
+    if(!user) return res.status(404).json({msg:"user not found"})
     return res.json(user);
 });
 
 // we have a problem here cause browers only makes get requests so 
-app.post('/api/users', (req, res) => {
+app.post('/api/users', async (req, res) => {
         const body =req.body; 
-        if(!body || !body.first_name ||!body.last_name || !body.gender) {
+        if(!body || !body.first_name ||!body.last_name || !body.gender || !body.ip_address ||
+            !body.email) {
             return res.status(400).json({msg:"All fields are required..."});
-        }
-        users.push({...body ,id: users.length +1}); // but we are using an offline file so we have to use FS module
-        fs.writeFile('MOCK_DATA.json', JSON.stringify(users), (err) => {
-            if (err) throw err;
-            console.log('The file has been saved!');
-            });
+            }
+        await User.create({
+            firstName:body.first_name,
+            lastName:body.last_name,
+            email:body.email,
+            gender:body.gender,
+            ipAddress:body.ip_address,
+
+        });
+        // console.log("result", result)
+        return res.status(201).json({msg:"success..."});
 });
 
-app.patch('/api/users/:id', (req, res) => { // now this ----- has the same route
-    // TODO: edit the user with id
-    return res.json({ status: "pending" });
+app.patch('/api/users/:id',async (req, res) => { // now this ----- has the same route
+    User.findByIdAndUpdate(req.params.id,{lastName:"changed"});
+    return res.json({ status: "done" });
 });
 
-app.delete('/api/users/:id', (req, res) => { // now this ----- has the same route
-    // TODO: delete the user with id
-    return res.json({ status: "pending" });
+app.delete('/api/users/:id',async (req, res) => { // now this ----- has the same route
+    await User.findByIdAndDelete(req.params.id);
+    return res.json({ status: "success" });
 });
 
 app.listen(PORT, () => console.log(`server started at PORT ${PORT}`));
