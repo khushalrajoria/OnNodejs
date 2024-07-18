@@ -18,3 +18,11 @@ hello function now() { [native code] } : GET : /api/users
 hello function now() { [native code] } : GET : /api/users/669681e3dd074c53d457366b
 hello function now() { [native code] } : GET : /api/users/669681e3dd074c53d457366b
 hello function now() { [native code] } : DELETE : /api/users/669681e3dd074c53d457366b
+hello function now() { [native code] } : POST : /api/users
+hello function now() { [native code] } : POST : /api/users
+hello function now() { [native code] } : GET : /api/users/669681e3dd074c53d457366b
+hello function now() { [native code] } : POST : /api/users
+hello function now() { [native code] } : POST : /api/users
+hello function now() { [native code] } : POST : /api/users
+hello function now() { [native code] } : GET : /api/users/669681e3dd074c53d457366b
+hello function now() { [native code] } : GET : /api/users/66989e750f942f421b448dfe
