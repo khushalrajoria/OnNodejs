@@ -12,11 +12,11 @@ const PORT = 8000;
 connectMongoDB('mongodb://127.0.0.1:27017/khushalDatabase-1');
 
 //middleware
-app.use(express.urlencoded({extended: false})); // ---> imp this will help in parsing the json received from postman
+app.use(express.urlencoded({extended: false}));
 
 app.use(logReqRes("log.txt"));
 
 //routes
-app.use("./api/user",userRouter);
+app.use("/api/users",userRouter); // --> corrected route
 
 app.listen(PORT, () => console.log(`server started at PORT ${PORT}`));
